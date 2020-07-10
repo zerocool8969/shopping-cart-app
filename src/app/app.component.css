@@ -1,0 +1,21 @@
+.bg-light {
+    background-color: #D6D6D0!important;
+}
+
+.footer-bottom {
+    background: #D6D6D0;
+    padding-top: 10px;
+  }
+  
+  .footer-bottom p {
+    color: #363432;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-left: 15px;
+  }
+  
+  .footer-bottom p span a {
+    color: #FE980F;
+    font-style: italic;
+    text-decoration: underline;
+  }

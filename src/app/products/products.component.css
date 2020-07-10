@@ -1,0 +1,19 @@
+.errorMsg{
+    color:red;
+}
+
+h2{
+    color: #FE980F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 auto 30px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 3;
+  }
+
+  table th, label{
+    color: #FE980F;
+    font-family: 'Roboto', sans-serif;
+  }

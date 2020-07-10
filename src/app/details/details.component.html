@@ -1,0 +1,61 @@
+<form [formGroup] = "productForm" (ngSubmit)="addToCart(productForm)" >
+<div class="container" style="margin-top: 20px;">
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+          <li><a href="/shop">Home</a></li>
+          <li class="active">Details</li>
+        </ol>
+    </div>
+<div class="row">
+<div class="col-sm-3">
+    <section id="advertisement" style="float: left;">
+		<div class="container">
+            <img src="../../assets/images/shipping.jpg" alt="banner"/>
+        </div>
+    </section>
+    <section id="advertisement" style="float: left;">
+		<div class="container">
+            <img src="../../assets/images/shipping.jpg" alt="banner"/>
+        </div>
+    </section>
+</div>
+<div class="col-sm-9" *ngFor="let item of productArray">
+    <div class="product-details"><!--product-details-->
+        <div class="col-sm-5" style="float: left;">
+            <div class="view-product">
+                <img src="{{item.image}}" alt="" />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="product-information"><!--/product-information-->
+                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                <h2>{{item.name}}</h2>
+                <span>
+                    <span>Rs.{{item.amount}}</span>
+                    <label>Current Quantity:{{item.quantity}}</label> <br/>
+                    <label>Quantity:</label>
+                    <input id="newQuantity" name="newQuantity" type="text" formControlName="newQuantity" />
+                    <input type="hidden" name="id" formControlName="id" />
+                    <input type="hidden" name="productAmount" formControlName="productAmount" />
+                    <input type="hidden" name="productQuantity" formControlName="productQuantity" />
+                    <input type="hidden" name="productName" formControlName="productName" />
+                    <input type="hidden" name="productImage" formControlName="productImage" />
+                    
+                    <div *ngIf="submitted && f.newQuantity.errors?.required" class="errorMsg">Quantity is required.</div>
+                    <div *ngIf="f.newQuantity.errors?.maxlength" class="errorMsg">Quantity maximum length is 2.</div>
+                    
+                    <button type="submit" class="btn btn-fefault cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add to cart
+                    </button>
+                </span>
+                <p><b>Availability:</b> In Stock</p>
+                <p><b>Condition:</b> New</p>
+                <p><b>Brand:</b> E-SHOPPER</p>
+            </div><!--/product-information-->
+        </div>
+    </div><!--/product-details-->
+</div>
+</div>
+</div>
+</form>

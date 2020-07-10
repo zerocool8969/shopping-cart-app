@@ -1,0 +1,79 @@
+<div class="container" style="margin-top: 20px;">
+    <h2>Products</h2>  
+    <form [formGroup] = "productForm" (ngSubmit)="addProduct(productForm)" >
+        <div class="form-group">
+            <label>Category Name</label>
+            <select name="categoryId" (change)="changeCategory($event)" formControlName="categoryId" class="form-control">
+                <option *ngFor="let title of dataArray;let i = index; " 
+                [value]="title.id"
+                [selected]="i == 0">
+                {{title.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" name="productName"  formControlName="productName" class="form-control"/>
+            <div *ngIf="submitted && f.productName.errors?.required" class="errorMsg">Product name is required.</div>
+            <div *ngIf="f.productName.errors?.minlength" class="errorMsg">Product name minimum length is 2.</div>
+            <div *ngIf="f.productName.errors?.maxlength" class="errorMsg">Product name maximum length is 50.</div>
+        </div>
+        <div class="form-group">
+            <label>Product Quantity</label>
+            <input type="text" name="productQuantity" (keypress)="numberOnly($event)" formControlName="productQuantity" class="form-control"/>
+            <div *ngIf="submitted && f.productQuantity.errors?.required" class="errorMsg">Product quantity is required.</div>
+            <div *ngIf="f.productQuantity.errors?.minlength" class="errorMsg">Product quantity minimum length is 1.</div>
+            <div *ngIf="f.productQuantity.errors?.maxlength" class="errorMsg">Product quantity maximum length is 4.</div>
+        </div>
+        <div class="form-group">
+            <label>Net Price</label>
+            <input type="text" name="netPrice" (keypress)="numberOnly($event)" formControlName="netPrice" class="form-control"/>
+            <div *ngIf="submitted && f.netPrice.errors?.required" class="errorMsg">NetPrice is required.</div>
+            <div *ngIf="f.netPrice.errors?.maxlength" class="errorMsg">NetPrice maximum length is 4.</div>
+        </div>
+        <div class="form-group">
+            <label>Total Product Amount</label>
+            <input type="text" name="productAmount" (keypress)="numberOnly($event)" formControlName="productAmount" class="form-control"/>
+            <div *ngIf="submitted && f.productAmount.errors?.required" class="errorMsg">Product amount is required.</div>
+            <div *ngIf="f.productAmount.errors?.maxlength" class="errorMsg">Product amount maximum length is 4.</div>
+        </div>
+        <div class="form-group">
+            <label>Product Image</label>
+            <input type="file" (change)="changeListener($event)" #input name="productImage"  formControlName="productImage" class="form-control" />
+            <div *ngIf="submitted && f.productImage.errors?.required" class="errorMsg">Product image is required.</div>
+        </div>
+        <div class="form-group">
+            <label>Product Description</label>
+            <input type="text" name="productDescription"  formControlName="productDescription" class="form-control"/>
+            <div *ngIf="f.productDescription.errors?.maxlength" class="errorMsg">Product description maximum length is 250.</div>
+        </div>
+            <input type="submit" class="btn btn-primary" value="+Add" />
+    </form>
+    <div style="margin-top: 10px;">
+    <h2>Products</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of productArray; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.productCategoryName}}</td>
+                <td><img style="width:100px; height:100px;" src="{{item.image}}" /></td>
+                <td><button (click)="deleteProduct(item.id)" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

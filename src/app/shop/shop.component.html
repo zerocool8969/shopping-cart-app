@@ -1,0 +1,43 @@
+<div class="container-fluid" style="margin-top: 20px;">
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+          <li><a href="/shop">Home</a></li>
+          <li class="active">Products</li>
+        </ol>
+    </div>
+    <section id="advertisement">
+		<div class="container">
+            <img src="../../assets/images/advertisement.jpg" alt="banner"/>
+        </div>
+    </section>
+    <div class="row" style="margin-top: 20px;">
+    <div class="col-sm-3">
+      <div style="text-align: center;"><h3>Categories</h3></div>
+      <div class="list-group" id="list-tab" role="tablist" *ngFor="let item of categoryArray">
+        <a class="list-group-item list-group-item-action active" id="{{item.id}}" data-toggle="list" href="#list-home" (click) = "getProducts(item.id)" role="tab" aria-controls="home">{{item.name}}</a>
+      </div>
+    </div>
+    <div class="col-sm-9">
+    <div style="text-align: center;"><h3>Features Item</h3></div>
+    <div class="col-sm-3" *ngFor="let item of productArray">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <img style="height:200px" src="{{item.image}}" alt="" />
+                    <h2>Rs.{{item.amount}}</h2>
+                    <p>{{item.name}}</p>
+                    <a (click)="detailsPage(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                </div>
+                <div class="product-overlay">
+                    <div class="overlay-content">
+                        <h2>Rs.{{item.amount}}</h2>
+                        <p>{{item.name}}</p>
+                        <a (click)="detailsPage(item.id)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

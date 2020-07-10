@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "shopping-cart-app"
+    }
+  },
+  "defaultProject": "shopping-cart-app",
+  "cli": {
+    "analytics": "4250a158-0239-401b-a011-5f93cbdc2a58"
+  }
 }

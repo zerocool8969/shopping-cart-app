@@ -1,0 +1,38 @@
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form [formGroup] = "productForm" (ngSubmit)="register(productForm)" >
+                        <h3 class="text-center text-info">Register</h3>
+                        <div class="form-group">
+                            <label for="fullName" class="text-info">Name:</label><br>
+                            <input type="text" name="fullName" id="fullName" formControlName="fullName" class="form-control">
+                            <div *ngIf="submitted && f.fullName.errors?.required" class="errorMsg">Name is required.</div>
+                            <div *ngIf="f.fullName.errors?.minlength" class="errorMsg">Name minimum length is 2.</div>
+                            <div *ngIf="f.fullName.errors?.maxlength" class="errorMsg">Name maximum length is 50.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="text-info">Email:</label><br>
+                            <input type="text" name="email" id="email" formControlName="email" class="form-control">
+                            <div *ngIf="submitted && f.email.errors?.required" class="errorMsg">Email is required.</div>
+                            <div *ngIf="f.email.errors?.maxlength" class="errorMsg">Email maximum length is 50.</div>
+                            <div *ngIf="f.email.invalid && f.email.touched " class="errorMsg">Invalid email.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="password" name="password" id="password" formControlName="password" class="form-control">
+                            <div *ngIf="submitted && f.password.errors?.required" class="errorMsg">Password is required.</div>
+                            <div *ngIf="f.password.errors?.minlength" class="errorMsg">Password minimum length is 2.</div>
+                            <div *ngIf="f.password.errors?.maxlength" class="errorMsg">Password maximum length is 50.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remember-me" class="text-info"><span> &nbsp;</span></label><br>
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

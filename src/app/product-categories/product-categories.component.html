@@ -1,0 +1,39 @@
+<div class="container" style="margin-top:20px;">
+    <h2>Product Categories</h2>
+    <form [formGroup] = "productCategoryForm" (ngSubmit)="addCategory(productCategoryForm)" >
+        <div class="form-group">
+            <label>Category Name</label>
+            <input type="text" name="categoryName"  formControlName="categoryName" class="form-control"/>
+            <div *ngIf="submitted && f.categoryName.errors?.required" class="errorMsg">Category name is required.</div>
+            <div *ngIf="f.categoryName.errors?.minlength" class="errorMsg">Category name minimum length is 2.</div>
+            <div *ngIf="f.categoryName.errors?.maxlength" class="errorMsg">Category name maximum length is 50.</div>
+        </div>
+        <div class="form-group">
+            <label>Category Description</label>
+            <input type="text" name="categoryDescription"  formControlName="categoryDescription" class="form-control"/>
+            <div *ngIf="f.categoryDescription.errors?.maxlength" class="errorMsg">Category description maximum length is 250.</div>
+        </div>
+            <input type="submit" class="btn btn-primary" value="+Add" />
+    </form>
+    <div style="margin-top: 10px;">
+    <h2>Product Categories</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dataArray; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td><button (click)="deleteCategory(item.id)" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
