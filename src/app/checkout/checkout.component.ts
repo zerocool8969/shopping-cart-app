@@ -89,7 +89,7 @@ export class CheckoutComponent implements OnInit {
   
   this._postService.create(checkout).subscribe(res =>{
     if(res){
-      alert("Products checkout successfully");
+      alert("Products checkout successfully.");
       this.cartService.clearStorage();
       window.location.reload();
     }
